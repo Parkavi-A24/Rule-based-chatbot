@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CodSoft Chatbot</title>
+</head>
+<body>
+    <h2>🤖 CodSoft Chatbot</h2>
+
+    <input type="text" id="msg" placeholder="Type a message">
+    <button onclick="sendMessage()">Send</button>
+
+    <p id="response"></p>
+
+    <script>
+        async function sendMessage() {
+            let msg = document.getElementById("msg").value;
+
+            let response = await fetch(/get?msg=${msg});
+            let data = await response.json();
+
+            document.getElementById("response").innerHTML =
+                "<b>Bot:</b> " + data;
+        }
+    </script>
+</body>
+</html>
